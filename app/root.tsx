@@ -6,10 +6,14 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import stylesheet from "~/globals.css?url";
+import tailwindStyleSheetUrl from "~/styles/globals.css?url";
+import fontStyleSheetUrl from "~/styles/fonts.css?url";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
+  { rel: 'preload', href: fontStyleSheetUrl, as: 'style' },
+  { rel: 'preload', href: tailwindStyleSheetUrl, as: 'style' },
+  { rel: "stylesheet", href: fontStyleSheetUrl },
+  { rel: "stylesheet", href: tailwindStyleSheetUrl },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
